@@ -1,5 +1,9 @@
 <template>
-  <d-form ref="formRef" :models="formModels" :layout="layoutType" />
+  <d-form
+    ref="formRef"
+    :models="formModels"
+    :layout="layoutType"
+  />
   <d-space :gap="10">
     <t-radio-group v-model="layoutType">
       <t-radio value="horizontal">horizontal</t-radio>
@@ -28,6 +32,7 @@ const formModels: Array<IFormModelItem | IRenderModel> = [
       parent: 'root',
       isContainer: true,
       columns: 12,
+      gap: 16,
       children: ['inputID', 'textareaID', 'datePickerID', 'rateID', 'radioID', 'checkboxID']
     }
   },
@@ -90,13 +95,11 @@ const formModels: Array<IFormModelItem | IRenderModel> = [
       parent: 'grid',
       column: 4
     },
-    otherProps: {
-      options: [
-        { label: '选项1', value: '1' },
-        { label: '选项2', value: '2' },
-        { label: '选项3', value: '3' }
-      ]
-    }
+    options: [
+      { label: '选项1', value: '1' },
+      { label: '选项2', value: '2' },
+      { label: '选项3', value: '3' }
+    ]
   },
   {
     id: 'checkboxID',
@@ -109,13 +112,11 @@ const formModels: Array<IFormModelItem | IRenderModel> = [
       parent: 'grid',
       column: 4
     },
-    otherProps: {
-      options: [
-        { label: '选项1', value: '1' },
-        { label: '选项2', value: '2' },
-        { label: '选项3', value: '3' }
-      ]
-    }
+    options: [
+      { label: '选项1', value: '1' },
+      { label: '选项2', value: '2' },
+      { label: '选项3', value: '3' }
+    ]
   }
 ]
 
