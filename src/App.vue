@@ -1,143 +1,91 @@
-<template>
-  <d-form
-    ref="formRef"
-    :models="formModels"
-    :layout="layoutType"
-  />
-  <d-space :gap="10">
-    <t-radio-group v-model="layoutType">
-      <t-radio value="horizontal">horizontal</t-radio>
-      <t-radio value="vertical">vertical</t-radio>
-    </t-radio-group>
-    <d-button @click="validate">执行校验</d-button>
-    <d-button @click="getFormData">获取数据</d-button>
-    <d-button @click="reset">重置</d-button>
-  </d-space>
-  <pre>{{ JSON.stringify(value, null, 2) }}</pre>
-</template>
-
 <script setup lang="ts">
-import { IFormModelItem, IRenderModel, DirectionType } from '@xuanmo/dl-common'
-import { computed, ref } from 'vue'
+import Layout from './layout/index.vue'
+import { FormModels } from '@xuanmo/dl-common'
+import { reactive } from 'vue'
 
-const formRef = ref()
+const theme = {
+  primary: '#0052d9',
+  success: '#20c997',
+  warning: '#fab005',
+  error: '#f03e3e'
+}
 
-const layoutType = ref<DirectionType>('horizontal')
+const globalConfig = reactive({})
 
-const formModels: Array<IFormModelItem | IRenderModel> = [
+const formModel: FormModels = [
   {
-    id: 'grid',
-    component: 'DGridLayout',
+    id: 'labelWidth',
+    dataKey: 'labelWidth',
+    label: '标题宽度',
+    component: 'TInputNumber',
+    value: 80,
     layout: {
-      parent: 'root',
-      isContainer: true,
-      columns: 12,
-      gap: 16,
-      children: ['inputID', 'textareaID', 'datePickerID', 'rateID', 'radioID', 'checkboxID']
+      parent: 'root'
     }
   },
   {
-    id: 'inputID',
-    dataKey: 'input',
-    label: '输入框',
-    component: 'TInput',
-    value: '',
-    rules: 'required|alpha',
+    id: 'colon',
+    dataKey: 'colon',
+    label: '显示冒号',
+    component: 'TSwitch',
+    value: false,
     layout: {
-      parent: 'grid',
-      column: 4
+      parent: 'root'
     }
   },
   {
-    id: 'textareaID',
-    dataKey: 'textarea',
-    label: '文本域',
-    component: 'TTextarea',
-    value: '',
-    rules: 'required',
-    layout: {
-      parent: 'grid',
-      column: 4
-    }
-  },
-  {
-    id: 'datePickerID',
-    dataKey: 'datePicker',
-    label: '日期选择',
-    component: 'TDatePicker',
-    required: true,
-    value: '',
-    layout: {
-      parent: 'grid',
-      column: 4
-    }
-  },
-  {
-    id: 'rateID',
-    dataKey: 'rate',
-    label: '评分',
-    required: true,
-    component: 'TRate',
-    value: undefined,
-    layout: {
-      parent: 'grid',
-      column: 4
-    }
-  },
-  {
-    id: 'radioID',
-    dataKey: 'radio',
-    label: '单选框',
+    id: 'layout',
+    dataKey: 'layout',
+    label: '标题布局',
     component: 'TRadioGroup',
-    value: '1',
-    required: true,
+    value: 'horizontal',
     layout: {
-      parent: 'grid',
-      column: 4
+      parent: 'root'
     },
     options: [
-      { label: '选项1', value: '1' },
-      { label: '选项2', value: '2' },
-      { label: '选项3', value: '3' }
+      { label: 'horizontal', value: 'horizontal' },
+      { label: 'vertical', value: 'vertical' }
     ]
   },
   {
-    id: 'checkboxID',
-    dataKey: 'checkbox',
-    label: '复选框',
-    component: 'TCheckboxGroup',
-    required: true,
-    value: [],
+    id: 'requiredPos',
+    dataKey: 'requiredMarkPosition',
+    label: '必填标识位置',
+    component: 'TRadioGroup',
+    value: 'right',
     layout: {
-      parent: 'grid',
-      column: 4
+      parent: 'root'
     },
     options: [
-      { label: '选项1', value: '1' },
-      { label: '选项2', value: '2' },
-      { label: '选项3', value: '3' }
+      { label: 'left', value: 'left' },
+      { label: 'right', value: 'right' }
     ]
   }
 ]
 
-const value = computed(() => formRef.value?.store?.getFormData())
-
-const validate = () => {
-  formRef.value.store.validate()
-}
-
-const getFormData = () => {
-  console.log(formRef.value.store.getFormData())
-}
-
-const reset = () => {
-  console.log(formRef.value.store.reset())
+const onChange = (value: any) => {
+  Object.assign(globalConfig, value)
 }
 </script>
 
-<style>
-.d-cell__title,
-.d-cell__content-inner {
-  line-height: var(--td-comp-size-m) !important;
-}
-</style>
+<template>
+  <d-config-provider
+    :theme="theme"
+    :label-width="80"
+    required-mark-position="right"
+    style="height: 100%"
+    v-bind="globalConfig"
+  >
+    <layout>
+      <template #setting>
+        <d-form
+          :models="formModel"
+          layout="horizontal"
+          :colon="false"
+          label-width="100px"
+          @change="onChange"
+        />
+      </template>
+    </layout>
+  </d-config-provider>
+</template>

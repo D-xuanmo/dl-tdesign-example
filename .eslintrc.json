@@ -1,0 +1,11 @@
+{
+  "env": {
+    "browser": true,
+    "es2021": true
+  },
+  "parser": "vue-eslint-parser",
+  "extends": [
+    "plugin:vue/vue3-recommended",
+    "xuanmo"
+  ]
+}

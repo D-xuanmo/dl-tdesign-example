@@ -1,0 +1,17 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+html, body, #app{
+  height: 100%;
+  overflow: hidden;
+}
+
+.d-cell__content {
+  align-items: center;
+}
+
+.d-cell__title {
+  line-height: var(--td-comp-size-m) !important;
+}
