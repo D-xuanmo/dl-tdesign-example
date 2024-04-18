@@ -468,10 +468,10 @@
   resolved "https://registry.npmjs.org/@vue/shared/-/shared-3.4.21.tgz#de526a9059d0a599f0b429af7037cd0c3ed7d5a1"
   integrity sha512-PuJe7vDIi6VYSinuEbUIQgMIRZGgM8e4R+G+/dQTk0X1NEdvgvvgv7m+rfmDH1gZzyA1OjjoWskvHlfRNfQf3g==
 
-"@xuanmo/dl-common@^0.0.5-beta.6":
-  version "0.0.5-beta.6"
-  resolved "https://registry.npmjs.org/@xuanmo/dl-common/-/dl-common-0.0.5-beta.6.tgz#2c46928e2cf5e1785979e88f72395e434faef9fb"
-  integrity sha512-NKb2N+028+zuks1egoSfVVemFBRqZ0L+QwPQR/BkqAVddWc7xF11yYB8HTtQnuUYOrkoykX0EyHiFp0KKNfM+g==
+"@xuanmo/dl-common@^0.0.5-beta.9":
+  version "0.0.5-beta.9"
+  resolved "https://registry.npmjs.org/@xuanmo/dl-common/-/dl-common-0.0.5-beta.9.tgz#437061bcbfbce3ace7d7af0e59e790ad16c2e877"
+  integrity sha512-pR9PgrLkV3zYlZZHKOQT6yHNK7+4mMgFqiFNMWBNye7gNHfpF9yDpz/qBRYWQ6Xjwd10SKY2251EINFP9aUVuQ==
 
 "@xuanmo/prettier-config@latest":
   version "0.0.2"

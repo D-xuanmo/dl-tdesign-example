@@ -138,3 +138,9 @@ const reset = () => {
     <d-button @click="reset">重置</d-button>
   </d-space>
 </template>
+
+<style scoped>
+:deep(.d-cell) {
+  padding: 10px 0;
+}
+</style>

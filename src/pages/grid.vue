@@ -156,4 +156,8 @@ onMounted(() => {
   </d-space>
 </template>
 
-<style scoped></style>
+<style scoped>
+:deep(.d-cell) {
+  padding: 0;
+}
+</style>
