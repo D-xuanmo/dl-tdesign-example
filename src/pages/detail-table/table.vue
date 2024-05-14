@@ -9,6 +9,7 @@
 import { useLinkChildren, IDetailTableItem, DFormItem, DDetailTableWrapper, useForm } from '@xuanmo/dl-common'
 import { TableProps } from 'tdesign-vue-next'
 import { computed } from 'vue'
+import { DetailTableRowData } from '@xuanmo/dl-common/dist/form/store/detail-table/types'
 
 const { store } = useForm()
 
@@ -36,7 +37,7 @@ const tableData = computed(() => {
   return Array.from(store.detailTableStore.getTableData(props.model.detailTableId)?.values() ?? [])
 })
 const addRow = () => {
-  store.detailTableStore.addRow({}, props.model.detailTableId)
+  store.detailTableStore.addRow({} as DetailTableRowData, props.model.detailTableId)
 }
 </script>
 
