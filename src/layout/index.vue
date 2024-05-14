@@ -17,6 +17,7 @@ const togglePage = (value: string) => {
       <t-menu v-model="activeMenu" class="app-menu" @change="togglePage">
         <t-menu-item value="/base">基础表单</t-menu-item>
         <t-menu-item value="/grid">表单网格布局</t-menu-item>
+        <t-menu-item value="/detail-table">明细表</t-menu-item>
       </t-menu>
     </d-layout-sider>
     <d-layout-content>

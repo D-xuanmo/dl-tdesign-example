@@ -50,7 +50,7 @@ const formModel: FormModels = [
   {
     id: 'requiredPos',
     dataKey: 'requiredMarkPosition',
-    label: '必填标识位置',
+    label: '必填位置',
     component: 'TRadioGroup',
     value: 'right',
     layout: {
@@ -60,7 +60,19 @@ const formModel: FormModels = [
       { label: 'left', value: 'left' },
       { label: 'right', value: 'right' }
     ]
-  }
+  },
+  {
+    id: 'git',
+    dataKey: 'git',
+    label: 'GitHub',
+    component: 'TTextarea',
+    value: 'https://github.com/D-xuanmo/dl-tdesign-example',
+    readonly: true,
+    layout: {
+      parent: 'root',
+      layout: 'vertical'
+    },
+  },
 ]
 
 const onChange = (value: any) => {
@@ -72,6 +84,8 @@ const onChange = (value: any) => {
   <d-config-provider
     :theme="theme"
     :label-width="80"
+    client-type="PC"
+    :round="false"
     required-mark-position="right"
     style="height: 100%"
     v-bind="globalConfig"
@@ -82,7 +96,7 @@ const onChange = (value: any) => {
           :models="formModel"
           layout="horizontal"
           :colon="false"
-          label-width="100px"
+          label-width="70px"
           @change="onChange"
         />
       </template>

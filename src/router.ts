@@ -14,6 +14,10 @@ const router = createRouter({
     {
       path: '/grid',
       component: () => import('./pages/grid.vue')
+    },
+    {
+      path: '/detail-table',
+      component: () => import('./pages/detail-table/index.vue')
     }
   ]
 })
