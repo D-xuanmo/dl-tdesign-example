@@ -1,10 +1,10 @@
 <script setup lang="ts">
-import { FormModels, GridProps, IRenderModel } from '@xuanmo/dl-common'
+import { FormModels, } from '@xuanmo/dl-common'
 import { onMounted, ref } from 'vue'
 
 const formRef = ref()
 const formModels: FormModels = [
-  <IRenderModel<GridProps>>{
+  {
     id: 'wrapper',
     component: 'DFormGrid',
     layout: {
