@@ -1,19 +1,24 @@
 <template>
-  <d-space :gap="8">
-    <d-button theme="primary" @click="getFormData">获取表单数据</d-button>
-    <d-button theme="primary" @click="update">更新表单数据</d-button>
-    <d-button theme="primary" @click="validate">表单校验</d-button>
+  <d-space direction="vertical">
+    <d-space :gap="8">
+      <d-button theme="primary" @click="getFormData">获取表单数据</d-button>
+      <d-button theme="primary" @click="update">更新表单数据</d-button>
+      <d-button theme="primary" @click="validate">表单校验</d-button>
+      <d-button theme="primary" @click=" disabled = ! disabled">表单禁用</d-button>
+    </d-space>
+    <d-form :models="formModel" :store="formStore" :disabled="disabled" />
   </d-space>
-  <d-form :models="formModel" :store="formStore" />
 </template>
 
 <script setup lang="ts">
 import { FormModels, FormStore, IDetailTableItem, useMessage } from '@xuanmo/dl-common'
 import DetailTable from './table.vue'
+import { ref } from 'vue'
 
 const message = useMessage()
 
 const formStore = new FormStore()
+const disabled = ref(false)
 
 const formModel: FormModels = [
   {
@@ -96,10 +101,9 @@ const validate = () => {
 const update = () => {
   formStore.updateData({
     mainField: 'xuanmo',
-    tableId: [
-      { rowId: '2', name: '萧炎', sex: '1' },
-      { rowId: '3', name: '药老', sex: '1' }
-    ]
+    tableId: Array.from({ length: 10 }).map((_, index) => {
+      return { rowId: `id.${index}`, name: `萧炎${index + 1}`, sex: '1' }
+    })
   })
 }
 </script>

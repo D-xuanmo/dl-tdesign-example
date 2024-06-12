@@ -1,7 +1,8 @@
 <script setup lang="ts">
-import { FormModels, } from '@xuanmo/dl-common'
+import { FormModels, useMessage } from '@xuanmo/dl-common'
 import { onMounted, ref } from 'vue'
 
+const message = useMessage()
 const formRef = ref()
 const formModels: FormModels = [
   {
@@ -128,6 +129,7 @@ const validate = () => {
 }
 
 const getFormData = () => {
+  message.success('打开控制台查看数据')
   console.log(formRef.value.store.getFormData())
 }
 
@@ -137,7 +139,7 @@ const reset = () => {
 
 onMounted(() => {
   fetch(
-    'https://my.xuanmo.xin:3000/api/my-admin/p/file/read/01f176be-287f-4dea-892f-7c938485aa18'
+    'https://admin.xuanmo.xin/api/my-admin/p/file/read/a938273e-d02a-4e02-8cee-7026b9e59b73'
   ).then(async (res) => {
     const options = await res.json()
     formRef.value.store?.updateModel('region', {

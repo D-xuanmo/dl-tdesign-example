@@ -1,8 +1,9 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-import { IFormModelItem, IRenderModel } from '@xuanmo/dl-common'
+import { IFormModelItem, IRenderModel, useMessage } from '@xuanmo/dl-common'
 
 const formRef = ref()
+const message = useMessage()
 
 const formModels: Array<IFormModelItem | IRenderModel> = [
   {
@@ -122,6 +123,7 @@ const validate = () => {
 }
 
 const getFormData = () => {
+  message.success('打开控制台查看数据')
   console.log(formRef.value.store.getFormData())
 }
 
