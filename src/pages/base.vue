@@ -1,3 +1,12 @@
+<template>
+  <d-form ref="formRef" :models="formModels" />
+  <d-space :gap="10">
+    <d-button theme="primary" @click="validate">提交</d-button>
+    <d-button @click="getFormData">获取数据</d-button>
+    <d-button @click="reset">重置</d-button>
+  </d-space>
+</template>
+
 <script setup lang="ts">
 import { ref } from 'vue'
 import { IFormModelItem, IRenderModel, useMessage } from '@xuanmo/dl-common'
@@ -131,18 +140,3 @@ const reset = () => {
   console.log(formRef.value.store.reset())
 }
 </script>
-
-<template>
-  <d-form ref="formRef" :models="formModels" />
-  <d-space :gap="10">
-    <d-button theme="primary" @click="validate">提交</d-button>
-    <d-button @click="getFormData">获取数据</d-button>
-    <d-button @click="reset">重置</d-button>
-  </d-space>
-</template>
-
-<style scoped>
-:deep(.d-cell) {
-  padding: 10px 0;
-}
-</style>

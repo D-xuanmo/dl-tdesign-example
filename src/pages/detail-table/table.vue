@@ -52,9 +52,3 @@ const addRow = () => {
   store.detailTableStore.addRow(props.model.detailTableId, {} as any)
 }
 </script>
-
-<style scoped>
-:deep(.d-cell) {
-  padding: 0;
-}
-</style>
